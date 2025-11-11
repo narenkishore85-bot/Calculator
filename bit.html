@@ -1,0 +1,61 @@
+<body>
+  <center>
+    <h1>Calculator Operations</h1>
+    <form onsubmit="calc(event)">
+      <label style="color:aliceblue;">VALUE 1</label>
+      <input id="val1" type="number" placeholder="Enter a number">
+      <br><br>
+      <label style="color: aliceblue;">VALUE 2</label>
+      <input id="val2" type="number" placeholder="Enter a number">
+      <br><br>
+      <label style="color: aliceblue;">SELECT OPERATION</label>
+      <select id="select">
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraction (-)</option>
+        <option value="*">Multiplication (*)</option>
+        <option value="/">Division (/)</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <h3 style="color: aliceblue;">ANSWER :</h3>
+    <p id="result" style="color: white;"></p>
+  </center>
+
+  <script>
+    function calc(event) {
+      event.preventDefault(); // stop form refresh
+
+      var a = parseFloat(document.getElementById("val1").value);
+      var b = parseFloat(document.getElementById("val2").value);
+      var op = document.getElementById("select").value;
+      var res;
+
+      switch (op) {
+        case "+": res = a + b; break;
+        case "-": res = a - b; break;
+        case "*": res = a * b; break;
+        case "/": 
+          res = (b !== 0) ? a / b : "Cannot divide by zero"; 
+          break;
+        default:
+          res = "Invalid operation";
+      }
+
+      document.getElementById("result").innerText = res;
+    }
+  </script>
+
+  <style>
+    h1 {
+      color: aliceblue;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    body {
+      background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIE6akxbDq-f8xBU2_zZVZ9tPd4klnMvDMOg&s);
+      background-size: cover;
+      background-color: black;
+    }
+  </style>
+</body>
